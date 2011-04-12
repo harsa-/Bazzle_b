@@ -1,0 +1,7 @@
+<%= form_tag '/posts',:method => :create, :remote => true do %>
+  <%= label_tag(:message, "What's your juicy gossip?") %><br />
+  <%= text_area_tag(:message, nil, :size => "44x6") %>
+  <%= submit_tag("Post") %>
+<% end %>
+    
+    

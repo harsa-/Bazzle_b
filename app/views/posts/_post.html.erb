@@ -1,0 +1,4 @@
+<% div_for post do %>
+  <div id="message_ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
+  <div id="message_content"><%= post.message %></div>
+<% end %>

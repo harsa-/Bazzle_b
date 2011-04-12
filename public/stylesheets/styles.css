@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html {
+	background-color: #99ccff;
+}
+
+body {
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	width: 50%;
+	margin: auto;
+	background-color: white;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: black;
+}
+
+.channel_title {
+	font-size: 20px;
+	text-align: center;
+	color: #999999;
+	font-style: italic;
+}
+
+form {
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #ff9933;
+	margin: 3px;
+}
+
+/*.message {
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #339933;
+	background-color: #ccffcc;
+	margin: 5px;
+}*/
+
+div#message_ago {
+}
+
+div#message_content {
+}
+
+
