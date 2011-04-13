@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(:message => params[:message])
+    @post = Post.create(:message => params[:message], :channel_id => params[:channel_id])
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to posts_path }

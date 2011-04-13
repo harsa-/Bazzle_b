@@ -32,6 +32,7 @@ form {
 	border-width: 2px;
 	border-style: solid;
 	border-color: #ff9933;
+	text-align: center;
 	margin: 3px;
 }
 
@@ -45,10 +46,15 @@ form {
 	margin: 5px;
 }*/
 
-div#message_ago {
+#posts {
+	text-align: center;
 }
 
-div#message_content {
+#message_ago {
+	font-weight: bold;
+}
+
+div #message_content {
 }
 
 

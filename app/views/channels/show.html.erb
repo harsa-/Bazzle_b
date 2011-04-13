@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div id="channel_title">
+  <%= @channel.name %>
+</div>
+
+<div id="message_form">
+  <%= render :partial => "posts/message_form" %>
+</div>
+
+<div id="posts">
+  <%= render :partial => @posts %>
+</div>
