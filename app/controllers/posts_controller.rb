@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    if @post.session_id.eql? session[:session_id]
+    if @post.can_destroy? session[:session_id]
        @post.destroy
 
     
