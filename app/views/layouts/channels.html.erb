@@ -6,18 +6,27 @@
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
   </head>
+
   <body>
 
-    <header>
-      Bazzle
-      <%= image_tag("Bazzle.png") %>
-    </header>
+    <div id="left">
+      <header>
+        Bazzle
+	<div id="logo">
+	<%= image_tag("Bazzle.png") %></div>
+      </header>
     
-    <div id="content">
-      <%= yield %>
+      <div id="content">
+        <%= yield %>
+      </div>
+
+      <footer></footer>
     </div>
 
-    <footer></footer>
+    <div id="right">
+
+    </div>
+
   </body>
 
 
