@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def index
     @posts = Post.all(:order => "created_at DESC")
     respond_to do |format|
@@ -9,12 +10,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(:message => params[:message], 
                         :channel_id => params[:channel_id], 
-                        :channel_name => params[:channel_name])
+                        :channel_name => params[:channel_name],
+                        :session_id => session[:session_id])
     
     respond_to do |format|
       if @post.save
+        format.js if request.xhr?
         format.html { redirect_to posts_path }
-        format.js { @current_post = @post }
       else
         flash[:notice] = "Message failed to save."
         format.html { redirect_to posts_path }
@@ -24,11 +26,15 @@ class PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    if @post.session_id.eql? session[:session_id]
+       @post.destroy
+
     
-    respond_to do |format|
-      format.js if request.xhr?
-      format.html { redirect_to channels_path }
+       respond_to do |format|
+         format.js if request.xhr?
+         format.html { redirect_to channels_path }
+       end
     end
   end
+      
 end
