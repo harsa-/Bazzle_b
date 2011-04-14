@@ -19,4 +19,15 @@ class PostsController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @destroyed_post = @post
+    @post.destroy
+    
+    respond_to do |format|
+      format.js if request.xhr?
+      format.html { redirect_to channels_path }
+    end
+  end
 end

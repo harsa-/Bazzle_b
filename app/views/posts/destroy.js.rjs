@@ -1,0 +1,6 @@
+page << "function removePost() {"
+page.replace_html page[@post], nil
+page << "}"
+page[@post].visual_effect :highlight
+
+#:blind_up, :duration => 1, :afterFinish => 'removePost'
