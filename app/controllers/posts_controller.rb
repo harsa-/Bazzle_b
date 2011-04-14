@@ -7,7 +7,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(:message => params[:message], :channel_id => params[:channel_id])
+    @post = Post.create(:message => params[:message], 
+                        :channel_id => params[:channel_id], 
+                        :channel_name => params[:channel_name])
     
     respond_to do |format|
       if @post.save
@@ -22,7 +24,6 @@ class PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @destroyed_post = @post
     @post.destroy
     
     respond_to do |format|

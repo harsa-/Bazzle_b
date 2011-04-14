@@ -1,6 +1,6 @@
 <%= form_tag '/posts',:method => :create, :remote => true do %>
   <%= label_tag(:message_label, "What's your juicy gossip?") %><br />
   <%= text_area_tag(:message, nil, :size => "44x6") %><br />
-  <%= hidden_field_tag :channel_id, @channel.id %>
+  <%= hidden_field_tag :channel_name, @channel.name %>
   <%= submit_tag("Post") %>
 <% end %>

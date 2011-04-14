@@ -1,6 +1,6 @@
 page << "function removePost() {"
-page.replace_html page[@post], nil
+page.replace_html 'post_'+@post.id.to_s, nil
 page << "}"
-page[@post].visual_effect :highlight
+page.visual_effect :blind_up, 'post_'+@post.id.to_s, :duration => 1, :afterFinish => 'removePost'
 
 #:blind_up, :duration => 1, :afterFinish => 'removePost'

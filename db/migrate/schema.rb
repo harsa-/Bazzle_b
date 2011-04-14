@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414081349) do
+ActiveRecord::Schema.define(:version => 20110413102114) do
 
   create_table "channels", :force => true do |t|
     t.text     "name",       :limit => 1000
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20110414081349) do
     t.text     "channel_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "channel_name"
   end
 
   create_table "slugs", :force => true do |t|

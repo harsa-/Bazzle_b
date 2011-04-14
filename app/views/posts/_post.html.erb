@@ -1,5 +1,6 @@
 <% div_for post do %>
   <div id="message_ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
   <div id="message_content"><%= post.message %></div>
-  <%= button_to 'Remove post', post, :method => :delete, :remote => true, :confirm => "Are you sure?" %>
+  <div id="debug"><%= post.channel_name %> <%= post.channel_id %></div>
+  <%= button_to 'Remove post', post, :method => :delete, :remote => true %>
 <% end %>
