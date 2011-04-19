@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110414095500) do
 
   create_table "channels", :force => true do |t|
-    t.text     "name",       :limit => 1000
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
