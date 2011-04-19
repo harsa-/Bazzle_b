@@ -1,7 +1,7 @@
 class Channel < ActiveRecord::Migration
   def self.up
     create_table :channels do |t|
-    t.text :name, :limit => 1000
+    t.text :name
     
       t.timestamps
     end
