@@ -91,7 +91,13 @@ form {
 	font-weight: bold;
 }
 
-div #message_content {
+#message_content {
 }
 
+#channel_title {
+	font-weight: bold;
+	text-align: center;
+	font-size: 40px;
+	height: 40px;
+}
 

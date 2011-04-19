@@ -6,7 +6,7 @@ BazzleB::Application.routes.draw do
 
   resources :posts
   
-  root :to => "posts#index"
+  root :to => "channels#index"
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
