@@ -9,6 +9,6 @@ class Post < ActiveRecord::Base
   end
   
   def seconds_remaining
-    return 60 - (Time.now - self.created_at).to_int
+    return 10 - (Time.now - self.created_at).to_int
   end
 end

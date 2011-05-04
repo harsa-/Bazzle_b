@@ -1,4 +1,11 @@
+page << "function removeDestroy() {"
+page.replace_html 'destroy_button', nil
+page << "}"
+
 page[:message].value = ""
 page.insert_html(:top, 'posts', render(:partial => @post))
-'destroyCountdown'
-page[@post].visual_effect :blind_down
+page[@post].visual_effect :blind_down, :afterFinish => 'countdown'
+
+page.delay(2) do
+  page.visual_effect :blind_up, 'destroy_button', :duration => 1, :afterFinish => 'removeDestroy'
+end

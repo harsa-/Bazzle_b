@@ -1,9 +1,14 @@
 <% div_for post do %>
-  <div id="message_ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
-  <div id="message_content"><%= post.message %></div>
+  <div class="message_ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
+  <div class="message_content"><%= post.message %></div>
   <% if post.can_destroy? session[:session_id] %>
+    <%= content_tag :div, :id => "destroy_button_"+post.id.to_s do -%>
       <%= button_to 'Remove post', post, :method => :delete, :remote => true %> 
-      Time left until destroy:
-       <div id="seconds_remaining"><%= post.seconds_remaining %></div>
+      Time left until destroy: 
+      <%= content_tag :div, :id => "seconds_remaining_"+post.id.to_s do -%><% end -%>
+      <script type="text/javascript">
+        startCountdown(<%= post.id.to_s + ", " + post.seconds_remaining.to_s %>);
+      </script>
+    <% end -%>
   <% end %>
 <% end %>

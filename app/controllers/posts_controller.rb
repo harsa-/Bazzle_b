@@ -40,7 +40,5 @@ class PostsController < ApplicationController
   def update_time
     render(:update) { |page| page.update_time }
   end
-
-    
       
 end

@@ -1,3 +1,15 @@
+Home page URL:
+
+http://morning-river-461.heroku.com/
+
+No separate user accounts, admin accounts or admin URL implemented yet.
+
+Channel list can be accessed at:
+
+http://morning-river-461.heroku.com/channels
+
+----
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
