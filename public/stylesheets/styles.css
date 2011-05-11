@@ -3,6 +3,7 @@
 
 html {
 	background-color: #99ccff;
+	overflow: auto;
 }
 
 body {
@@ -11,9 +12,8 @@ body {
 }
 
 #left {
-	position: fixed;
+	position: relative;
 	top: 140px;
-	right: 25%;
 	left: 25%;
 	width: 450px;
 }
@@ -45,7 +45,7 @@ header {
 }
 
 footer {
-	margin-bottom: 25px;
+	height: 50px;
 }
 
 #right {
@@ -55,49 +55,67 @@ footer {
 	right: 25%;	
 }
 
-
-.channel_title {
-	font-size: 20px;
-	text-align: center;
-	color: #999999;
+#channel_title {
+	font-size: 16px;
+	text-align: right;
+	margin-right: 20px;
+	color: #339933;
 	font-style: italic;
 }
 
-form {
-	-moz-border-radius: 10px;
+textarea {
+	margin-left: 5px;
+	font-size: 12px;
+	min-width: 420px;
+	max-width: 420px;
+	border: 2px solid #ff9933;
 	border-radius: 10px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #ff9933;
-	text-align: center;
-	margin: 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
-/*.message {
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #339933;
-	background-color: #ccffcc;
-	margin: 5px;
-}*/
+textarea:focus {
+	outline: none;
+}
+
+input {
+	position: absolute;
+	right: 15px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #ff9933;
+	font-weight: bold;
+}
 
 #posts {
-	text-align: center;
+	margin-top: 35px;
 }
 
-#message_ago {
-	font-weight: bold;
+/*Inside a post goes message_content, message_ago (and Remove button + seconds_remaining)*/
+.post {
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px solid #339933;
+	background-color: #ccffcc;
+	margin: 5px;
+	word-break: break-all;
 }
 
 #message_content {
+	margin: 5px;
+	max-width: 410px;
 }
 
-#channel_title {
-	font-weight: bold;
-	text-align: center;
-	font-size: 40px;
-	height: 40px;
+#message_ago {
+	color: #333333;
+	font-style: italic;
+	text-align: right;
+	margin: 5px;
 }
 
+#seconds_remaining {
+	right: 120px;
+	margin: 5px;
+}

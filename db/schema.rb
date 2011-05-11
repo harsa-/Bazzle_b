@@ -40,3 +40,4 @@ ActiveRecord::Schema.define(:version => 20110414095500) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
 end
+
