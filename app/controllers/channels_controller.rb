@@ -14,7 +14,7 @@ class ChannelsController < ApplicationController
   # GET /channels/1.xml
   def show
     @channel = Channel.find(params[:id])
-    @posts = Post.find_all_by_channel_id(params[:id], :order => "created_at DESC")  
+    @posts = Post.find_all_by_channel_id(@channel.id, :order => "created_at DESC")  
 
     respond_to do |format|
       format.html # show.html.erb
