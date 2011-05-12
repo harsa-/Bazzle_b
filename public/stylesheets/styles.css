@@ -7,20 +7,19 @@ html {
 }
 
 body {
-	background-color: #99ccff;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 #left {
 	position: relative;
-	top: 140px;
+	top: 70px;
 	left: 25%;
 	width: 450px;
 }
 
 header {
 	margin-left: 13px;
-	margin-bottom: 55px;
+	margin-bottom: 5px;
 	font-size: 120px;
 	font-weight: bolder;
 	color: #339933;
@@ -30,11 +29,12 @@ header {
 #logo {
 	position: absolute;
 	z-index: 1;
-	margin-top: -80px;
+	margin-top: -130px;
 	margin-left: 380px;
 }
 
 #content {
+	font-size: 12px;
 	width: 440px;
 	background-color: white;
 	-moz-border-radius: 10px;
@@ -50,7 +50,7 @@ footer {
 
 #right {
 	position: fixed;
-	top: 70px;
+	top: 50px;
 	left: 75%;
 	right: 25%;	
 }
@@ -76,6 +76,7 @@ textarea {
 
 textarea:focus {
 	outline: none;
+	
 }
 
 input {
@@ -103,19 +104,24 @@ input {
 	word-break: break-all;
 }
 
-#message_content {
+.message_content {
 	margin: 5px;
 	max-width: 410px;
 }
 
-#message_ago {
+.message_ago {
 	color: #333333;
 	font-style: italic;
 	text-align: right;
 	margin: 5px;
 }
 
-#seconds_remaining {
+.nobrake {
+	margin-left: 5px;
+	white-space: nowrap;
+}
+
+/*.seconds_remaining {
 	right: 120px;
 	margin: 5px;
-}
+}*/

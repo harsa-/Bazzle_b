@@ -1,4 +1,6 @@
 BazzleB::Application.routes.draw do
+  get "index/view"
+
   resources :channels
 
   # The priority is based upon order of creation:

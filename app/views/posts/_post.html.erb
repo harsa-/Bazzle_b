@@ -4,11 +4,13 @@
   <% if post.can_destroy? session[:session_id] %>
     <%= content_tag :div, :id => "destroy_button_"+post.id.to_s do -%>
       <%= button_to 'Remove post', post, :method => :delete, :remote => true %> 
-      Time left until destroy: 
-      <%= content_tag :div, :id => "seconds_remaining_"+post.id.to_s do -%><% end -%>
+      <div class="nobrake">
+	  Time left until destroy: 
+	  <%= content_tag :div, :id => "seconds_remaining_"+post.id.to_s do -%><% end -%>
       <script type="text/javascript">
         startCountdown(<%= post.id.to_s + ", " + post.seconds_remaining.to_s %>);
       </script>
+	  </div	>
     <% end -%>
   <% end %>
 <% end %>

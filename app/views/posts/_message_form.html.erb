@@ -1,6 +1,13 @@
-<%= form_tag '/posts',:method => :create, :remote => true do %>
-  <%= label_tag(:message_label, "What's your juicy gossip?") %><br />
-  <%= text_area_tag(:message, nil, :size => "44x6") %><br />
+<script type="text/javascript">
+  function select_all() {
+	var text=eval("document.post.message");
+	text.focus();
+	text.select();
+  }
+</script>
+
+<%= form_tag '/posts', :name => "post", :method => :create, :remote => true do %>
+  <%= text_area_tag(:message, "What's your juicy gossip?", :size => "44x6", :onClick => "select_all();") %><br />
   <%= hidden_field_tag :channel_id, @channel.id %>
   <%= hidden_field_tag :channel_name, @channel.name %>
   <%= submit_tag("Post") %>
