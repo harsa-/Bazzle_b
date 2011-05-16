@@ -4,7 +4,7 @@ page << "}"
 
 page[:message].value = ""
 page.insert_html(:top, 'posts', render(:partial => @post))
-page[@post].visual_effect :blind_down, :afterFinish => 'countdown'
+page[@post].visual_effect :blind_down
 
 page.delay(2) do
   page.visual_effect :blind_up, 'destroy_button', :duration => 1, :afterFinish => 'removeDestroy'
