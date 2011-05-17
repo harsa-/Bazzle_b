@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414095500) do
+ActiveRecord::Schema.define(:version => 20110517141300) do
 
   create_table "channels", :force => true do |t|
     t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "posts", :force => true do |t|
@@ -40,4 +41,3 @@ ActiveRecord::Schema.define(:version => 20110414095500) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
 end
-
