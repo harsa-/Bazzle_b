@@ -1,6 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
 
+/* * {
+   padding: 0;
+   margin: 0;
+}*/
+
 html {
 	background-color: #99ccff;
 	overflow: auto;
@@ -23,7 +28,12 @@ header {
 	font-size: 120px;
 	font-weight: bolder;
 	color: #339933;
-	-webkit-text-stroke: 3px black;
+	
+	text-shadow: 3px  3px 0 #000,
+			    -1px -1px 0 #000,
+    			 1px -1px 0 #000,
+   				-1px  1px 0 #000,
+    			 1px  1px 0 #000;
 }
 
 #logo {
@@ -76,7 +86,6 @@ textarea {
 
 textarea:focus {
 	outline: none;
-	
 }
 
 input {
