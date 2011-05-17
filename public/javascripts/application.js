@@ -8,7 +8,7 @@ function destroyCountdown(div, startTime) {
 }
 
 function startCountdown(post_id, seconds_remaining) {
-    $('seconds_remaining_'+post_id).update(seconds_remaining);
+    $('seconds_remaining_'+post_id).update(seconds_remaining + " seconds left");
 	seconds_remaining = seconds_remaining - 1;
 	if (seconds_remaining > 0)
 		setTimeout(function() { startCountdown(post_id, seconds_remaining); }, 1000);
@@ -17,5 +17,5 @@ function startCountdown(post_id, seconds_remaining) {
 }
 
 function hideDestroyButton(post_id) {
-    Effect.BlindUp('destroy_button_'+post_id);
+    Effect.Fade('destroy_button_'+post_id);
 }
