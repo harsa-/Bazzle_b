@@ -15,10 +15,15 @@ body {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-#left {
+#container {
 	position: relative;
-	top: 70px;
 	left: 25%;
+	width: 800px;
+}
+
+#left {
+	position: absolute;
+	top: 70px;
 	width: 450px;
 }
 
@@ -61,7 +66,7 @@ footer {
 #right {
 	position: absolute;
 	top: 15px;
-	left: 70%;
+	left: 550px;
 }
 
 button {
@@ -93,7 +98,7 @@ button {
 	border-color: #ff9933;
 }
 
-#description {
+#sidebar {
 	position: absolute;
 	margin-top: 270px;
 	margin-left: -90px;
