@@ -1,17 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<div id="channel_title">
-  <%= @channel.name %>
-</div>
+<% content_for(:right) do %>
+  <div id="buttons">
+	<table>
+		<tr>
+		  <td><button type="button" id="add">+</button></td>
+		  <td><button type="button" id="help">?</button></td>
+		  <td><button type="button" id="terms">§</button></td>
+		</tr>
+	</table>
+  </div>
 
-<hr />
+  <div id="description">
+	<div id="channel_title">
+	  <%= @channel.name %>
+	</div>
 
-<div id="channel_description">
-  <strong>Channel description:</strong>
-  <p>foo</p>
-</div>
+	<hr />
 
-<hr />
+	<div id="channel_description">
+	  <strong>Channel description:</strong>
+	  <p><%= @channel.description %></p>
+	</div>
+  </div>
+<% end %>
+
 <div id="gossip_text">What's your juicy gossip?</div>
 <div id="message_form">
   <%= render :partial => "posts/message_form" %>
