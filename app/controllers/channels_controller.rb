@@ -41,7 +41,7 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.xml
   def create
-    @channel = Channel.new(:name => params[:name], :description => params[:description])
+    @channel = Channel.new(:name => params[:name], :description => params[:channel_description])
 
     respond_to do |format|
       if @channel.save
