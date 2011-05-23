@@ -81,4 +81,40 @@ class ChannelsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def refresh
+    @channel = Channel.find(params[:id])
+    @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page.replace_html "posts", :partial => @posts
+        end
+      }
+    end
+  end
+  
+  def show_modal
+    
+    @type = params[:type]
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page[@type].toggle
+        end
+      }
+    end
+  end
+  
+  def hide_modal
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page[@type].show
+        end
+      }
+    end
+  end
 end

@@ -1,0 +1,14 @@
+Script started on Thu May 19 16:07:51 2011
+bash-3.2$ ls
+Gemfile		app		doc		script		vendor
+Gemfile.lock	config		lib		test
+README		config.ru	log		tmp
+Rakefile	db		public		typescript
+bash-3.2$ cd sc[K[K[K[K[Kcd script
+bash-3.2$ ls
+rails
+bash-3.2$ cd [K[K[K
+bash-3.2$ exit
+exit
+
+Script done on Thu May 19 16:08:15 2011

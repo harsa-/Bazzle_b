@@ -1,12 +1,19 @@
 BazzleB::Application.routes.draw do
   get "index/view"
 
-  resources :channels
+  resources :channels do
+    member do
+      post 'refresh'
+      get 'show_modal'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   resources :posts
+  
+  resources :overlays
   
   root :to => "channels#new"
 
