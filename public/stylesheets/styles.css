@@ -22,7 +22,8 @@ body {
 #container {
 	position: relative;
 	left: 25%;
-	width: 800px;
+	width: 650px;
+	right: 25%;
 }
 
 /* Holds header, content and footer.*/
@@ -63,16 +64,16 @@ footer {
 
 /* Posting related options.*/
 #gossip_text {
-	margin-right:10px;
-	font-size:14px;
-	font-weight:bold;
-	text-align:right;
+	margin-right: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
 }
 
 #refresh {
-	position:relative;
-	float:left;
-	margin-left:20px;
+	position: relative;
+	float: left;
+	margin-left: 20px;
 }
 
 textarea {
@@ -218,4 +219,54 @@ button {
 #channel_description {
 	margin: 10px;
 	text-align:right;
+}
+
+
+#TOU {
+	position: fixed;
+	z-index: 2;
+	left: 25%;
+	top: 70px;
+	width: 550px;
+	display: block;
+	background-color: black;
+	
+	/* Theoretically for IE 8 & 9 (more valid) */
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	
+	/* This works in IE 8 & 9 too ... but also 5, 6, 7 */
+	filter: alpha(opacity=80);
+	
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.8;
+	
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.8;
+	
+	/* Modern!
+	/* Firefox 0.9+, Safari 2?, Chrome any?
+	/* Opera 9+, IE 9+ */
+	opacity: 0.8;
+	
+	color: white;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: black;
+}
+
+p {
+	font-size: 12px;
+	margin: 5px;
+}
+
+h1 {
+	margin: 5px;
+}
+
+h2 {
+	margin: 5px;
 }
