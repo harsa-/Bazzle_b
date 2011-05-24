@@ -1,12 +1,13 @@
+<%= javascript_include_tag 'overlay' %>
+
 <p id="notice"><%= notice %></p>
 
 <% content_for(:right) do %>
   <div id="buttons">
 	<table>
 		<tr>
-		  <td><button type="button" id="add">+</button></td>
 		  <td><button type="button" id="help">?</button></td>
-		  <td><button type="button" id="terms">§</button></td>
+		  <td><%= link_to "#", {:action => :show_modal, :type => "TOU"}, {:remote => true} %><button type="button" id="terms">§</button></td>
 		</tr>
 	</table>
   </div>
@@ -28,9 +29,18 @@
 <div id="gossip_text">What's your juicy gossip?</div>
 <div id="message_form">
   <%= render :partial => "posts/message_form" %>
+  <%= button_to "Refresh posts", {:controller => "channels", :action => :refresh}, {:remote => true, :id => "refresh"} %>
 </div>
-
 <div id="posts">
   <%= render :partial => @posts %>
 </div>
 
+<div id="TOU" style = "display:none">
+  <%= render :partial => "terms" %>
+</div>
+
+<script type="text/javascript"> 
+function terms() {
+  var terms = new Overlay().show($('TOU'));
+}
+</script>

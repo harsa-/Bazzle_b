@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
   
-  def index
-    @posts = Post.all(:order => "created_at DESC")
+  def show
+    @channel = Channel.find(params[:channel_id])
+    @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")
+    
     respond_to do |format|
-      format.html
+      format.js {
+        render :update do |page|
+          page.replace_html "posts", :partial => @posts
+        end
+      }
     end
   end
 
@@ -35,10 +41,6 @@ class PostsController < ApplicationController
          format.html { redirect_to channels_path }
        end
     end
-  end
-  
-  def update_time
-    render(:update) { |page| page.update_time }
-  end
-      
+  end   
+
 end

@@ -69,6 +69,12 @@ footer {
 	text-align:right;
 }
 
+#refresh {
+	position:relative;
+	float:left;
+	margin-left:20px;
+}
+
 textarea {
 	margin-left: 5px;
 	font-size: 12px;
