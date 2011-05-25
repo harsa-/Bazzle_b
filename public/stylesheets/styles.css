@@ -98,9 +98,18 @@ input {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	font-weight: bold;
+}
+
+input[type="submit"] {
+	border: 1px solid #000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	background: #ff9933;
 	font-weight: bold;
 }
+
 /* Posting related options end.*/
 
 
@@ -269,4 +278,22 @@ h1 {
 
 h2 {
 	margin: 5px;
+}
+
+label {
+	margin: 5px;
+}
+
+#who {
+	margin-top: 20px;
+}
+
+input[id="name"] {
+	position: relative;
+	left: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #ff9933;
 }
