@@ -1,10 +1,35 @@
 class PostsController < ApplicationController
   
-  def show
-    @channel = Channel.find(params[:channel_id])
-    @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")
+  # takes offset and timestamp as parameters
+  def index
+    if params[:timestamp]
+      @posts = Post.order("created_at DESC").where("created_at > ? AND channel_id = ?", params[:timestamp].to_datetime, params[:channel_id])
+      @timestamp = params[:timestamp]
+    else
+      @posts = Post.find_all_by_channel_id(params[:channel_id], :order => "created_at DESC")
+    end
     
     respond_to do |format|
+      format.html {
+        render :partial => @posts
+      }
+      format.js {
+        if @posts
+          render :update do |page|
+            render :partial => @posts
+            page.insert_html(:top, 'new_posts', render(:partial => @posts, :layout => false))
+            page['new_posts'].visual_effect :blind_down
+          end
+        end
+      }
+    end
+  end
+  
+  def show
+    @posts = Post.find_all_by_channel_id(params[:channel_id], :order => "created_at DESC")
+    
+    respond_to do |format|
+      format.html { render }
       format.js {
         render :update do |page|
           page.replace_html "posts", :partial => @posts

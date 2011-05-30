@@ -14,8 +14,14 @@
     <div id="left">
       <header>
         Bazzle
-		<div id="logo"><%= image_tag("Bazzle.png") %></div>
+		    <div id="logo"><%= image_tag("Bazzle.png") %></div>
       </header>
+      
+      <div id="menu">
+        <%= render "menu" %>
+        <br>
+        <br>
+      </div>
     
       <div id="content">
         <%= yield %>

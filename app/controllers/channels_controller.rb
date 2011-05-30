@@ -15,6 +15,7 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")  
+    @last_refresh = Time.now
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,11 +26,16 @@ class ChannelsController < ApplicationController
   # GET /channels/new
   # GET /channels/new.xml
   def new
-    @channel = Channel.new(:name => "Whee")
+    if (params[:tab] == 'who') || (params[:tab] == 'instructions')
+      @tab = params[:tab]
+    else
+      @tab = 'create_channel_form'
+    end
 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @channel }
+      format.js
     end
   end
 
@@ -41,7 +47,7 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.xml
   def create
-    @channel = Channel.new(:name => params[:name], :description => params[:channel_description])
+    @channel = Channel.new(:name => params[:name], :description => params[:description])
 
     respond_to do |format|
       if @channel.save
@@ -102,7 +108,7 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       format.js {
         render :update do |page|
-          page[@type].toggle
+          page[@type].visual_effect 'toggle', 'appear'
         end
       }
     end
@@ -113,6 +119,18 @@ class ChannelsController < ApplicationController
       format.js {
         render :update do |page|
           page[@type].show
+        end
+      }
+    end
+  end
+  
+  def show_tab
+    @tab = params[:tab]
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page[@tab].replace_html render(:partial => @tab)
         end
       }
     end
