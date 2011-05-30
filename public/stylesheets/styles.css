@@ -284,6 +284,7 @@ a {
 p {
 	font-size: 12px;
 	margin: 5px;
+	margin-bottom: 12px;
 }
 
 h1 {
@@ -291,6 +292,10 @@ h1 {
 }
 
 h2 {
+	margin: 5px;
+}
+
+h3 {
 	margin: 5px;
 }
 
