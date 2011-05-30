@@ -1,3 +1,11 @@
 <div id="tab_content">
-	<%= render :partial => @tab %>
+  <%= content_tag :div, {:id => "create_channel_form", :style => @create_visibility} do -%> 
+	  <%= render :partial => "create_channel_form" %>
+	<% end -%>
+  <%= content_tag :div, {:id => "instructions", :style => @instruction_visibility} do -%> 
+	  <%= render :partial => "instructions" %>
+	<% end -%>
+	<%= content_tag :div, {:id => "who", :style => @who_visibility} do -%> 
+	  <%= render :partial => "who" %>
+	<% end -%>
 </div>

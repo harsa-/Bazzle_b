@@ -1,1 +1,2 @@
-page.replace_html 'tab_content', :partial => @tab
+page.hide 'create_channel_form', 'instructions', 'who'
+page.show @tab

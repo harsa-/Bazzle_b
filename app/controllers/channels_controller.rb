@@ -26,10 +26,21 @@ class ChannelsController < ApplicationController
   # GET /channels/new
   # GET /channels/new.xml
   def new
-    if (params[:tab] == 'who') || (params[:tab] == 'instructions')
+    if (params[:tab] == 'who')
       @tab = params[:tab]
+      @who_visibility = "display:block"
+      @instruction_visibility = "display:none"
+      @create_visibility = "display:none"
+    elsif (params[:tab] == 'instructions')
+      @tab = params[:tab]
+      @who_visibility = "display:none"
+      @instruction_visibility = "display:block"
+      @create_visibility = "display:none"
     else
       @tab = 'create_channel_form'
+      @who_visibility = "display:none"
+      @instruction_visibility = "display:none"
+      @create_visibility = "display:block"
     end
 
     respond_to do |format|
@@ -119,18 +130,6 @@ class ChannelsController < ApplicationController
       format.js {
         render :update do |page|
           page[@type].show
-        end
-      }
-    end
-  end
-  
-  def show_tab
-    @tab = params[:tab]
-    
-    respond_to do |format|
-      format.js {
-        render :update do |page|
-          page[@tab].replace_html render(:partial => @tab)
         end
       }
     end
