@@ -1,26 +1,32 @@
 @charset "UTF-8";
 /* CSS Document */
 
-/* * {
-   padding: 0;
-   margin: 0;
-}*/
-
 html {
 	background-color: #99ccff;
 	overflow: auto;
+}
+
+#logo {
+	position: absolute;
+	z-index: 1;
+	margin-top: -130px;
+	margin-left: 380px;
 }
 
 body {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
+
+/* Holds right and left divs.*/
 #container {
 	position: relative;
 	left: 25%;
-	width: 800px;
+	width: 650px;
+	right: 25%;
 }
 
+/* Holds header, content and footer.*/
 #left {
 	position: absolute;
 	top: 70px;
@@ -41,13 +47,6 @@ header {
     			 1px  1px 0 #000;
 }
 
-#logo {
-	position: absolute;
-	z-index: 1;
-	margin-top: -130px;
-	margin-left: 380px;
-}
-
 #content {
 	font-size: 12px;
 	width: 440px;
@@ -63,80 +62,18 @@ footer {
 	height: 50px;
 }
 
-#right {
-	position: absolute;
-	top: 15px;
-	left: 550px;
-}
-
-button {
-	font-size: 15px;
-	font-weight: bold;
-	text-align: center;
-	width: 27px;
-	height: 27px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-}
-
-#add {
-	background-color: #ccffcc;
-	color: #339933;
-}
-
-#help {
-	background-color: #3399cc;
-	color: #99ccff;
-}
-
-#terms {
-	background-color: white;
-	color: #ff9933;
-	border-color: #ff9933;
-}
-
-#sidebar {
-	position: absolute;
-	margin-top: 270px;
-	margin-left: -90px;
-	font-size: 12px;
-	width: 190px;
-	background-color: white;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: black;
-}
-
-#channel_title {
-	font-size: 16px;
-	text-align: right;
-	margin-right: 10px;
-	margin-top: 5px;
-	color: #339933;
-	font-style: italic;
-}
-
-#channel_description {
-	margin: 10px;
-	text-align:right;
-}
-
+/* Posting related options.*/
 #gossip_text {
-	margin-right:10px;
-	font-size:14px;
-	font-weight:bold;
-	text-align:right;
+	margin-right: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
 }
 
 #refresh {
-	position:relative;
-	float:left;
-	margin-left:20px;
+	position: relative;
+	float: left;
+	margin-left: 20px;
 }
 
 textarea {
@@ -154,6 +91,10 @@ textarea:focus {
 	outline: none;
 }
 
+input:focus {
+	outline: none;
+}
+
 input {
 	position: absolute;
 	right: 15px;
@@ -161,9 +102,20 @@ input {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	font-weight: bold;
+}
+
+input[type="submit"] {
+	border: 1px solid #000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	background: #ff9933;
 	font-weight: bold;
 }
+
+/* Posting related options end.*/
+
 
 #posts {
 	margin-top: 35px;
@@ -176,7 +128,7 @@ input {
 	border: 2px solid #339933;
 	background-color: #ccffcc;
 	margin: 5px;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 .message_content {
@@ -215,4 +167,147 @@ input {
 
 .button_to {
 	float:left;
+}
+
+
+/* Holds buttons and sidebar.*/
+#right {
+	position: absolute;
+	top: 15px;
+	left: 550px;
+}
+
+td {
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	width: 27px;
+	height: 27px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+}
+
+#add {
+	background-color: #ccffcc;
+	color: #339933;
+}
+
+#help {
+	background-color: #3399cc;
+	color: #99ccff;
+}
+
+#terms {
+	background-color: white;
+	color: #ff9933;
+	border-color: #ff9933;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	font: inherit;
+}
+
+#sidebar {
+	position: absolute;
+	margin-top: 270px;
+	margin-left: -90px;
+	font-size: 12px;
+	width: 190px;
+	background-color: white;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: black;
+}
+
+#channel_title {
+	font-size: 16px;
+	text-align: right;
+	margin-right: 10px;
+	margin-top: 5px;
+	color: #339933;
+	font-style: italic;
+}
+
+#channel_description {
+	margin: 10px;
+	text-align:right;
+}
+
+
+.button {
+	position: fixed;
+	z-index: 2;
+	left: 25%;
+	top: 70px;
+	width: 550px;
+	display: block;
+	background-color: black;
+	
+	/* Theoretically for IE 8 & 9 (more valid) */
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	
+	/* This works in IE 8 & 9 too ... but also 5, 6, 7 */
+	filter: alpha(opacity=80);
+	
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.8;
+	
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.8;
+	
+	/* Modern!
+	/* Firefox 0.9+, Safari 2?, Chrome any?
+	/* Opera 9+, IE 9+ */
+	opacity: 0.8;
+	
+	color: white;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: black;
+}
+
+#ADD {
+	height: 120px;
+}
+
+p {
+	font-size: 12px;
+	margin: 5px;
+}
+
+h1 {
+	margin: 5px;
+}
+
+h2 {
+	margin: 5px;
+}
+
+label {
+	margin: 5px;
+}
+
+#who {
+	margin-top: 20px;
+}
+
+input[id="name"] {
+	position: relative;
+	left: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #ff9933;
 }

@@ -1,3 +1,13 @@
-<%= render :partial => 'create_channel_form' %>
 
-<%= link_to 'Back', channels_path %>
+<div id="instructions">
+	<%= render :partial => "instructions" %>
+</div>
+
+<div id="create">
+	<h1>Get started!</h1>
+	<%= render :partial => 'create_channel_form' %>
+</div>
+
+<div id="who">
+	<%= render :partial => "who" %>
+</div>
