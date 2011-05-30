@@ -1,0 +1,3 @@
+page.alert render(:partial => @post)
+page.insert_html(:top, 'posts', render(:partial => @postaukset))
+page['posts'].visual_effect :blind_down

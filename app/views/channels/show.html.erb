@@ -6,9 +6,9 @@
   <div id="buttons">
 	<table>
 		<tr>
-		  <td id="add"><%= link_to "+", {:action => :show_modal, :type => "ADD"}, {:remote => true} %></td>
-		  <td id="help"><%= link_to "?", {:action => :show_modal, :type => "INS"}, {:remote => true} %></td>
-		  <td id="terms"><%= link_to "§", {:action => :show_modal, :type => "TER"}, {:remote => true} %></td>
+		  <td id="add"><%= link_to "+", {:action => :show_modal, :type => "create_channel_form"}, {:remote => true} %></td>
+		  <td id="help"><%= link_to "?", {:action => :show_modal, :type => "instructions"}, {:remote => false} %></td>
+		  <td id="terms"><%= link_to "§", {:action => :show_modal, :type => "terms_of_use"}, {:remote => true} %></td>
 		</tr>
 	</table>
   </div>
@@ -27,14 +27,33 @@
   </div>
 <% end %>
 
-<div id="gossip_text">What's your juicy gossip?</div>
-<div id="message_form">
-  <%= render :partial => "posts/message_form" %>
-  <%= button_to "Refresh posts", {:controller => "posts", :action => :index, :timestamp => @last_refresh, :channel_id => @channel.id.to_s}, {:remote => true, :id => "refresh"} %>
+<div id="menu">
+  <%= render "channel_menu" %>
 </div>
 
-<div id="new_posts">
+<div id="tab_content">
+<%= content_tag :div, {:id => "channel", :style => @channel_visibility} do -%>
+  <div id="gossip_text">What's your juicy gossip? (In less than 1000 characters.)</div>
+  <div id="message_form">
+    <%= render :partial => "posts/message_form" %>
+    <%= button_to "Refresh posts", {:controller => "posts", :action => :index, :timestamp => @last_refresh, :channel_id => @channel.id.to_s}, {:remote => true, :id => "refresh"} %>
+  </div>
+
+  <div id="posts">
+    <%= render :partial => @posts %>
+  </div>
+
+<% end -%>
+
+<%= content_tag :div, {:id => "instructions", :style => @instruction_visibility} do -%> 
+  <%= render :partial => "instructions" %>
+<% end -%>
+
+<%= content_tag :div, {:id => "create_channel_form", :style => @new_visibility} do -%> 
+  <%= render :partial => "create_channel_form" %>
+<% end -%>
 </div>
-<div id="posts">
-  <%= render :partial => @posts %>
-</div>
+
+<% content_for(:footer) do %>
+  <%= link_to "Terms of Use", {:controller => "terms"}, {:id => "TOU"} %>
+<% end %>

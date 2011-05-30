@@ -7,6 +7,10 @@ BazzleB::Application.routes.draw do
       get 'show_modal'
     end
   end
+  
+  match "terms" => "terms#index"
+  
+  match "channels" => "channels#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

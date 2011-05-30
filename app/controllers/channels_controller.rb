@@ -16,9 +16,27 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
     @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")  
     @last_refresh = Time.now
+    
+    if (params[:tab] == 'create_channel_form')
+      @tab = 'create_channel_form'
+      @new_visibility = "display:block"
+      @channel_visibility = "display:none"
+      @instruction_visibility = "display:none"
+    elsif (params[:tab] == 'instructions')
+      @tab = 'instructions'
+      @new_visibility = "display:none"
+      @channel_visibility = "display:none"
+      @instruction_visibility = "display:block"
+    else
+      @tab = 'channel'
+      @new_visibility = "display:none"
+      @channel_visibility = "display:block"
+      @instruction_visibility = "display:none"
+    end
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.xml  { render :xml => @channel }
     end
   end
@@ -117,9 +135,10 @@ class ChannelsController < ApplicationController
     @type = params[:type]
     
     respond_to do |format|
+      format.html { render :partial => @type}
       format.js {
         render :update do |page|
-          page[@type].visual_effect 'toggle', 'appear'
+          page[@type].toggle
         end
       }
     end
