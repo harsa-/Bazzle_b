@@ -6,8 +6,9 @@
   <div id="buttons">
 	<table>
 		<tr>
-		  <td><button type="button" id="help">?</button></td>
-		  <td><%= link_to "#", {:action => :show_modal, :type => "TOU"}, {:remote => true} %><button type="button" id="terms">§</button></td>
+		  <td id="add"><%= link_to "+", {:action => :show_modal, :type => "ADD"}, {:remote => true} %></td>
+		  <td id="help"><%= link_to "?", {:action => :show_modal, :type => "INS"}, {:remote => true} %></td>
+		  <td id="terms"><%= link_to "§", {:action => :show_modal, :type => "TER"}, {:remote => true} %></td>
 		</tr>
 	</table>
   </div>
@@ -35,12 +36,21 @@
   <%= render :partial => @posts %>
 </div>
 
-<div id="TOU" style = "display:none">
+
+<div id="ADD" class="button" style = "display:none">
+  <%= render :partial => "create_channel_form" %>
+</div>
+
+<div id="INS" class="button" style = "display:none">
+  <%= render :partial => "instructions" %>
+</div>
+
+<div id="TER" class="button" style = "display:none">
   <%= render :partial => "terms" %>
 </div>
 
 <script type="text/javascript"> 
 function terms() {
-  var terms = new Overlay().show($('TOU'));
+  var terms = new Overlay().show($('TER'));
 }
 </script>

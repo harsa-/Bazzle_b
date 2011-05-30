@@ -91,6 +91,10 @@ textarea:focus {
 	outline: none;
 }
 
+input:focus {
+	outline: none;
+}
+
 input {
 	position: absolute;
 	right: 15px;
@@ -124,7 +128,7 @@ input[type="submit"] {
 	border: 2px solid #339933;
 	background-color: #ccffcc;
 	margin: 5px;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 .message_content {
@@ -173,7 +177,7 @@ input[type="submit"] {
 	left: 550px;
 }
 
-button {
+td {
 	font-size: 15px;
 	font-weight: bold;
 	text-align: center;
@@ -200,6 +204,12 @@ button {
 	background-color: white;
 	color: #ff9933;
 	border-color: #ff9933;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	font: inherit;
 }
 
 #sidebar {
@@ -231,7 +241,7 @@ button {
 }
 
 
-#TOU {
+.button {
 	position: fixed;
 	z-index: 2;
 	left: 25%;
@@ -265,6 +275,10 @@ button {
 	border-width: 2px;
 	border-style: solid;
 	border-color: black;
+}
+
+#ADD {
+	height: 120px;
 }
 
 p {

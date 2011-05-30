@@ -1,3 +1,5 @@
+
+
 <%= div_for (post) do %>
   <% if post.can_destroy? session[:session_id] %>
     <%= content_tag :div, :class => "destroy_button", :id => "destroy_button_"+post.id.to_s do -%>
