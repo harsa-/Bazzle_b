@@ -15,6 +15,7 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")  
+    @last_refresh = Time.now
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +42,7 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.xml
   def create
-    @channel = Channel.new(:name => params[:name], :description => params[:channel_description])
+    @channel = Channel.new(:name => params[:name], :description => params[:description])
 
     respond_to do |format|
       if @channel.save
@@ -102,7 +103,7 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       format.js {
         render :update do |page|
-          page[@type].toggle
+          page[@type].visual_effect 'toggle', 'appear'
         end
       }
     end
