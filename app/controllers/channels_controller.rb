@@ -26,11 +26,16 @@ class ChannelsController < ApplicationController
   # GET /channels/new
   # GET /channels/new.xml
   def new
-    @channel = Channel.new(:name => "Whee")
+    if (params[:tab] == 'who') || (params[:tab] == 'instructions')
+      @tab = params[:tab]
+    else
+      @tab = 'create_channel_form'
+    end
 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @channel }
+      format.js
     end
   end
 
@@ -114,6 +119,18 @@ class ChannelsController < ApplicationController
       format.js {
         render :update do |page|
           page[@type].show
+        end
+      }
+    end
+  end
+  
+  def show_tab
+    @tab = params[:tab]
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page[@tab].replace_html render(:partial => @tab)
         end
       }
     end
