@@ -1,7 +1,7 @@
+<div id="menu">
+   <%= render "main_menu" %>
+</div>
 <div id="tab_content">
-  <div id="menu">
-     <%= render "main_menu" %>
-   </div>
   <%= content_tag :div, {:id => "create_channel_form", :style => @create_visibility} do -%> 
 	  <%= render :partial => "create_channel_form" %>
 	<% end -%>
