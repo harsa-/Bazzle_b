@@ -316,3 +316,23 @@ input[id="name"] {
 	border-style: solid;
 	border-color: #ff9933;
 }
+
+#menu {
+	margin: 5px;
+	border-bottom: solid 2px black;
+	font-size: 16px;
+}
+
+.tab_button {
+	margin-left: 35px;
+	margin-left: 35px;
+	text-align: justify;
+}
+
+a[class="tab_button"]:hover {
+	color: #339933;
+}
+
+#create_channel_form {
+	height: 157px;
+}
