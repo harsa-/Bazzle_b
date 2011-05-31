@@ -8,29 +8,21 @@ class PostsController < ApplicationController
 #    else
       @posts = Post.find_all_by_channel_id(params[:channel_id], :order => "created_at DESC")
 #    end
+
     
     respond_to do |format|
-      format.html
       format.js
+      format.html { redirect_to Channel.find(params[:channel_id]) }
     end
   end
   
   def show
-    @posts = Post.find_all_by_channel_id(params[:channel_id], :order => "created_at DESC")
-    
-    respond_to do |format|
-      format.html { render }
-      format.js {
-        render :update do |page|
-          page.replace_html "posts", render(:partial => "posts/post", :collection => @posts)
-        end
-      }
-    end
+    render :file => "public/404.html"
   end
 
   def create
     @message = params[:message] #.split_after(100)
-    
+    @channel = Channel.find(params[:channel_id])
     @post = Post.create(:message => @message, 
                         :channel_id => params[:channel_id], 
                         :channel_name => params[:channel_name],
@@ -39,10 +31,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.js if request.xhr?
-        format.html { redirect_to posts_path }
+        format.html { redirect_to @channel }
       else
         flash[:notice] = "Message failed to save."
-        format.html { redirect_to posts_path }
+        format.html { redirect_to @channel }
       end
     end
   end

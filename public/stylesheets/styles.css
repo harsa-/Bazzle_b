@@ -61,6 +61,12 @@ footer {
 	height: 50px;
 }
 
+#notice {
+	margin-left: 5px;
+	color:red;
+	margin-bottom:5px;
+}
+
 /* Posting related options.*/
 #gossip_text {
 	margin-right: 10px;
@@ -341,5 +347,5 @@ a[class="tab_button"]:hover {
 }
 
 #create_channel_form {
-	height: 157px;
+    margin-bottom:30px;
 }

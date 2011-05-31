@@ -1,7 +1,3 @@
-<%= javascript_include_tag 'overlay' %>
-
-<p id="notice"><%= notice %></p>
-
 <% content_for(:right) do %>
   <div id="sidebar">
     <div id="channel_title">
@@ -12,7 +8,11 @@
     
 	<div id="channel_description">
       <strong>Channel description:</strong>
-      <p><%= @channel.description %></p>
+      <% unless @channel.description.empty? %>
+        <p><%= @channel.description %></p>
+      <% else %>
+        <p>No description.</p>
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -26,7 +26,7 @@
     <div id="gossip_text">What's your juicy gossip? (In less than 1000 characters.)</div>
     <div id="message_form">
       <%= render :partial => "posts/message_form" %>
-      <%= link_to "Refresh posts", posts_path + "?timestamp=" + @last_refresh.to_s + "&channel_id=" + @channel.id.to_s, {:remote => true, :id => "refresh"}%>
+      <%= link_to "Refresh posts", posts_path + "?timestamp=" + @last_refresh.to_s + "&channel_id=" + @channel.id.to_s, {:remote => false, :id => "refresh"}%>
     </div>
 
     <div id="posts">

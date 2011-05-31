@@ -1,5 +1,5 @@
 <h1>Create a channel!</h1>
-<%= flash[:notice] %>
+<p id="notice"><%= flash[:notice] %></p>
 <%= form_tag '/channels',:method => :create do %>
   <%= label_tag(:name, "Name your channel:") %><br />
   <%= text_field_tag(:name, nil, :size => "44") %><br />

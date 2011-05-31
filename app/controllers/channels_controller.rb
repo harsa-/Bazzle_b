@@ -15,7 +15,7 @@ class ChannelsController < ApplicationController
       begin
         @channel = Channel.find(params[:id])
       rescue ActiveRecord::RecordNotFound
-        redirect_to channel_url, :notice => 'Invalid channel!'
+        render :file => "public/no_channel.html"
       else
         @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")  
         @last_refresh = Time.now
@@ -81,15 +81,22 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.xml
   def create
-    @channel = Channel.new(:name => params[:name], :description => params[:description])
-
-    respond_to do |format|
-      if @channel.save
-        format.html { redirect_to(@channel, :notice => 'Channel was successfully created.') }
-        format.xml  { render :xml => @channel, :status => :created, :location => @channel }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @channel.errors, :status => :unprocessable_entity }
+    if is_number?(params[:name])
+      redirect_to :action => "new" and flash[:notice] = 'Channel name cannot be a number!'
+    elsif params[:name] == ""
+      redirect_to :action => "new" and flash[:notice] = 'Channel name cannot be empty!'
+    elsif params[:description] == ""
+      redirect_to :action => "new" and flash[:notice] = 'Channel description cannot be empty!'      
+    else
+      @channel = Channel.new(:name => params[:name], :description => params[:description])
+      respond_to do |format|
+        if @channel.save
+          format.html { redirect_to(@channel, :notice => 'Channel was successfully created.') }
+          format.xml  { render :xml => @channel, :status => :created, :location => @channel }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @channel.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -103,25 +110,7 @@ class ChannelsController < ApplicationController
   # DELETE /channels/1
   # DELETE /channels/1.xml
   def destroy
-    @channel = Channel.find(params[:id])
-    @channel.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(channels_url) }
-      format.xml  { head :ok }
-    end
+    render :file => "public/404.html"
   end
   
-  def refresh
-    @channel = Channel.find(params[:id])
-    @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")
-    
-    respond_to do |format|
-      format.js {
-        render :update do |page|
-          page.replace_html "posts", :partial => @posts
-        end
-      }
-    end
-  end
 end
