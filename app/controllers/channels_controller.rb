@@ -86,12 +86,13 @@ class ChannelsController < ApplicationController
     elsif params[:name] == ""
       redirect_to :action => "new" and flash[:notice] = 'Channel name cannot be empty!'
     elsif params[:description] == ""
-      redirect_to :action => "new" and flash[:notice] = 'Channel description cannot be empty!'      
+      redirect_to :action => "new" and flash[:notice] = 'Channel description cannot be empty!'
+    elsif params[:name] == 'create'
     else
       @channel = Channel.new(:name => params[:name], :description => params[:description])
       respond_to do |format|
         if @channel.save
-          format.html { redirect_to(@channel, :notice => 'Channel was successfully created.') }
+          format.html { redirect_to(@channel)}
           format.xml  { render :xml => @channel, :status => :created, :location => @channel }
         else
           format.html { render :action => "new" }
