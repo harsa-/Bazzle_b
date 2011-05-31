@@ -1,2 +1,6 @@
-page.hide 'create_channel_form', 'instructions', 'who'
-page.show @tab
+page['tab_content'].visual_effect :fade, :duration => 0.5
+page.delay(0.5) do
+  page.hide 'create_channel_form', 'instructions', 'who'
+  page.show @tab
+  page['tab_content'].visual_effect :appear, :duration => 0.5
+end

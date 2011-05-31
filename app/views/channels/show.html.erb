@@ -36,7 +36,7 @@
   <div id="gossip_text">What's your juicy gossip? (In less than 1000 characters.)</div>
   <div id="message_form">
     <%= render :partial => "posts/message_form" %>
-    <%= button_to "Refresh posts", {:controller => "posts", :action => :index, :timestamp => @last_refresh, :channel_id => @channel.id.to_s}, {:remote => true, :id => "refresh"} %>
+    <%= button_to "Refresh posts", {:controller => "posts", :action => :index, :timestamp => @last_refresh, :channel_id => @channel.id.to_s}, {:remote => false, :id => "refresh", :method => :post, :timestamp => @last_refresh} %>
   </div>
 
   <div id="posts">

@@ -10,9 +10,7 @@ class PostsController < ApplicationController
 #    end
     
     respond_to do |format|
-      format.html {
-        render :partial => @posts
-      }
+      format.html
       format.js
     end
   end
@@ -24,7 +22,7 @@ class PostsController < ApplicationController
       format.html { render }
       format.js {
         render :update do |page|
-          page.replace_html "posts", :partial => @posts
+          page.replace_html "posts", render(:partial => "posts/post", :collection => @posts)
         end
       }
     end

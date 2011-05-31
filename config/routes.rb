@@ -15,7 +15,11 @@ BazzleB::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resources :posts
+  resources :posts do
+    member do
+      post 'index'
+    end
+  end
   
   resources :overlays
   

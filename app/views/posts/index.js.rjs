@@ -1,2 +1,2 @@
-page.insert_html(:top, 'posts', render(:partial => @posts))
+page.replace_html 'posts', render(:partial => @posts)
 page['posts'].visual_effect :blind_down
