@@ -3,44 +3,43 @@
 <p id="notice"><%= notice %></p>
 
 <% content_for(:right) do %>
-
   <div id="sidebar">
-	<div id="channel_title">
-	  <%= @channel.name %>
-	</div>
-
+    <div id="channel_title">
+      <%= @channel.name %>
+    </div>
+    
 	<hr />
-
+    
 	<div id="channel_description">
-	  <strong>Channel description:</strong>
-	  <p><%= @channel.description %></p>
-	</div>
+      <strong>Channel description:</strong>
+      <p><%= @channel.description %></p>
+    </div>
   </div>
 <% end %>
 
 <div id="menu">
-<%= render "channel_menu" %>
+  <%= render "channel_menu" %>
 </div>
 
 <div id="tab_content">
-<%= content_tag :div, {:id => "channel", :style => @channel_visibility} do -%>
-  <div id="gossip_text">What's your juicy gossip? (In less than 1000 characters.)</div>
-  <div id="message_form">
-    <%= render :partial => "posts/message_form" %>
-    <%= link_to "Refresh posts", posts_path + "?timestamp=" + @last_refresh.to_s + "&channel_id=" + @channel.id.to_s, {:remote => true, :id => "refresh"}%>
-  </div>
+  <%= content_tag :div, {:id => "channel", :style => @channel_visibility} do -%>
+    <div id="gossip_text">What's your juicy gossip? (In less than 1000 characters.)</div>
+    <div id="message_form">
+      <%= render :partial => "posts/message_form" %>
+      <%= link_to "Refresh posts", posts_path + "?timestamp=" + @last_refresh.to_s + "&channel_id=" + @channel.id.to_s, {:remote => true, :id => "refresh"}%>
+    </div>
 
-  <div id="posts">
-    <%= render :partial => @posts %>
-  </div>
+    <div id="posts">
+      <%= render :partial => @posts %>
+    </div>
 
-<% end -%>
+  <% end -%>
 
-<%= content_tag :div, {:id => "instructions", :style => @instruction_visibility} do -%> 
-  <%= render :partial => "instructions" %>
-<% end -%>
+  <%= content_tag :div, {:id => "instructions", :style => @instruction_visibility} do -%> 
+    <%= render :partial => "instructions" %>
+  <% end -%>
 
-<%= content_tag :div, {:id => "create_channel_form", :style => @new_visibility} do -%> 
-  <%= render :partial => "create_channel_form" %>
-<% end -%>
+  <%= content_tag :div, {:id => "create_channel_form", :style => @new_visibility} do -%> 
+    <%= render :partial => "create_channel_form" %>
+  <% end -%>
 </div>

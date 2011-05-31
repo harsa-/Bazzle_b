@@ -1,14 +1,17 @@
 <div id="menu">
-   <%= render "main_menu" %>
+  <%= render "main_menu" %>
 </div>
+
 <div id="tab_content">
   <%= content_tag :div, {:id => "create_channel_form", :style => @create_visibility} do -%> 
-	  <%= render :partial => "create_channel_form" %>
-	<% end -%>
+    <%= render :partial => "create_channel_form" %>
+  <% end -%>
+  
   <%= content_tag :div, {:id => "instructions", :style => @instruction_visibility} do -%> 
-	  <%= render :partial => "instructions" %>
-	<% end -%>
-	<%= content_tag :div, {:id => "who", :style => @who_visibility} do -%> 
-	  <%= render :partial => "who" %>
-	<% end -%>
+    <%= render :partial => "instructions" %>
+  <% end -%>
+  
+  <%= content_tag :div, {:id => "who", :style => @who_visibility} do -%> 
+	<%= render :partial => "who" %>
+  <% end -%>
 </div>

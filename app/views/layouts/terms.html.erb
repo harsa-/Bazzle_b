@@ -10,28 +10,27 @@
 
   <body>
 	
-	<div id="container">
-    <div id="left">
-      <header>
-        Bazzle
-		    <div id="logo"><%= image_tag("Bazzle.png") %></div>
-      </header>
+    <div id="container">
+      <div id="left">
+        <header>
+          Bazzle
+          <div id="logo"><%= image_tag("Bazzle.png") %></div>
+        </header>
     
-      <div id="content">
-        <%= yield %>
-      </div>
+        <div id="content">
+          <%= yield %>
+        </div>
       
-      <div id="footer">
-         <%= yield :footer %>
-       </div>
-    </div>
+        <div id="footer">
+		</div>
+	  </div>
 
-    <div id="right">
-	  <%= yield :right %>
-    </div>
+	<div id="right">
+      <%= yield :right %>
+	</div>
     
  
-	</div>
+    </div>
 
   </body>
 
