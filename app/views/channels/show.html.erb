@@ -26,7 +26,7 @@
     <div id="gossip_text">What's your juicy gossip? (In less than 1000 characters.)</div>
     <div id="message_form">
       <%= render :partial => "posts/message_form" %>
-      <%= link_to "Refresh posts", posts_path + "?timestamp=" + @last_refresh.to_s + "&channel_id=" + @channel.id.to_s, {:remote => false, :id => "refresh"}%>
+      <%= link_to "Refresh posts", posts_path + "?timestamp=" + @last_refresh.to_s + "&channel_id=" + @channel.id.to_s, {:remote => true, :id => "refresh"}%>
     </div>
 
     <div id="posts">
