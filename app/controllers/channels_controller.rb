@@ -2,42 +2,47 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.xml
   def index
-    @channels = Channel.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @channels }
-    end
+    redirect_to :action => "new"
   end
 
   # GET /channels/1
   # GET /channels/1.xml
   def show
-    @channel = Channel.find(params[:id])
-    @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")  
-    @last_refresh = Time.now
-    
-    if (params[:tab] == 'create_channel_form')
-      @tab = 'create_channel_form'
-      @new_visibility = "display:block"
-      @channel_visibility = "display:none"
-      @instruction_visibility = "display:none"
-    elsif (params[:tab] == 'instructions')
-      @tab = 'instructions'
-      @new_visibility = "display:none"
-      @channel_visibility = "display:none"
-      @instruction_visibility = "display:block"
+    if (is_number?(params[:id]))
+      render :file => "public/no_channel.html"
     else
-      @tab = 'channel'
-      @new_visibility = "display:none"
-      @channel_visibility = "display:block"
-      @instruction_visibility = "display:none"
-    end
+    
+      begin
+        @channel = Channel.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to channel_url, :notice => 'Invalid channel!'
+      else
+        @posts = Post.find_all_by_channel_id(@channel.id.to_s, :order => "created_at DESC")  
+        @last_refresh = Time.now
+    
+        if (params[:tab] == 'create_channel_form')
+          @tab = 'create_channel_form'
+          @new_visibility = "display:block"
+          @channel_visibility = "display:none"
+          @instruction_visibility = "display:none"
+        elsif (params[:tab] == 'instructions')
+          @tab = 'instructions'
+          @new_visibility = "display:none"
+          @channel_visibility = "display:none"
+          @instruction_visibility = "display:block"
+        else
+          @tab = 'channel'
+          @new_visibility = "display:none"
+          @channel_visibility = "display:block"
+          @instruction_visibility = "display:none"
+        end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.js
-      format.xml  { render :xml => @channel }
+        respond_to do |format|
+          format.html # show.html.erb
+          format.js
+          format.xml  { render :xml => @channel }
+        end
+      end
     end
   end
 
@@ -70,7 +75,7 @@ class ChannelsController < ApplicationController
 
   # GET /channels/1/edit
   def edit
-    @channel = Channel.find(params[:id])
+    render :file => "public/404.html"
   end
 
   # POST /channels
@@ -92,17 +97,7 @@ class ChannelsController < ApplicationController
   # PUT /channels/1
   # PUT /channels/1.xml
   def update
-    @channel = Channel.find(params[:id])
-
-    respond_to do |format|
-      if @channel.update_attributes(params[:channel])
-        format.html { redirect_to(@channel, :notice => 'Channel was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @channel.errors, :status => :unprocessable_entity }
-      end
-    end
+    render :file => "public/404.html"
   end
 
   # DELETE /channels/1
@@ -125,30 +120,6 @@ class ChannelsController < ApplicationController
       format.js {
         render :update do |page|
           page.replace_html "posts", :partial => @posts
-        end
-      }
-    end
-  end
-  
-  def show_modal
-    
-    @type = params[:type]
-    
-    respond_to do |format|
-      format.html { render :partial => @type}
-      format.js {
-        render :update do |page|
-          page[@type].toggle
-        end
-      }
-    end
-  end
-  
-  def hide_modal
-    respond_to do |format|
-      format.js {
-        render :update do |page|
-          page[@type].show
         end
       }
     end
