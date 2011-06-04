@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag 'styles' %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
+	<%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body>
@@ -20,7 +21,7 @@
           <%= yield %>
         </div>
 
-        <div id="footer">
+        <div id="footer" style="height:50px">
 		
         </div>
       </div>
